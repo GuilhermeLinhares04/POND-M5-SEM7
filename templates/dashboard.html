@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+</head>
+<body>
+    <h1>Logs</h1>
+    <div hx-get="logs.json" hx-trigger="load">
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template hx-swap="outerHTML" hx-target="this">
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ log.timestamp }}</td>
+                        <td>{{ log.message }}</td>
+                    </tr>
+                    {% endfor %}
+                </template>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
