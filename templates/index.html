@@ -5,9 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar Comando</title>
     <script src="https://unpkg.com/htmx.org@1.9.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <form id="command-form" hx-post="/command">
+    <form id="command-form" hx-post="/command" onsubmit="alert('Coordenadas enviadas ao robô!')">
         <p>Posição Atual do Robô: {{ current_pose }}</p>
         <h1>Enviar Coordenadas</h1>
         <input type="number" name="x" id="x" placeholder="Digite o valor de X">
@@ -16,7 +48,7 @@
         <input type="number" name="r" id="r" placeholder="Digite o valor de R">
         <button type="submit">Enviar</button>
     </form>
-    <form id="home-form" hx-post="/home">
+    <form id="home-form" hx-post="/home" onsubmit="alert('Retornando à posição Home')">
         <button type="submit">Home</button>
     </form>
 </body>
