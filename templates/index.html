@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Comando</title>
+    <script src="https://unpkg.com/htmx.org@1.9.1"></script>
+</head>
+<body>
+    <form id="command-form" hx-post="/command">
+        <p>Posição Atual do Robô: {{ current_pose }}</p>
+        <h1>Enviar Coordenadas</h1>
+        <input type="number" name="x" id="x" placeholder="Digite o valor de X">
+        <input type="number" name="y" id="y" placeholder="Digite o valor de Y">
+        <input type="number" name="z" id="z" placeholder="Digite o valor de Z">
+        <input type="number" name="r" id="r" placeholder="Digite o valor de R">
+        <button type="submit">Enviar</button>
+    </form>
+    <form id="home-form" hx-post="/home">
+        <button type="submit">Home</button>
+    </form>
+</body>
+</html>
